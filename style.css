@@ -1,0 +1,40 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+
+.main{
+    height: 650px;
+    /* border: 1px solid red; */
+    margin-top: 15px;
+    background-color: rgb(179, 202, 225);
+}
+.header{
+    background-color: #7c77e4;
+}
+
+.main h3{
+    text-align: center;
+}
+.details{
+    height: 100px;
+    /* border: 1px solid red; */
+    margin-top: 20px;
+}
+.error{
+    display: none;
+    background-color: #96b3d3;
+}
+.chart{
+    /* border: 1px solid green; */
+    height: 450px;
+}
+.btn{
+    
+    margin: 10px 0px 10px 0px;
+}
+/* .headStart{
+    text-align: end;
+} */
