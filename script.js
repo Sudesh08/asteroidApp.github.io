@@ -53,6 +53,7 @@ fetch(apiUrl+startDate.toISOString().split("T")[0]+`&end_date=${endDate.toISOStr
                 // labels: ["a", "b", "c", "d"],
                 datasets: [
                     {
+                        lable: "Number of Asteroid",
                         // data: [1, 2, 3, 6],
                         data: AsteroidData,
                         backgroundColor: "#292756",
@@ -66,6 +67,7 @@ fetch(apiUrl+startDate.toISOString().split("T")[0]+`&end_date=${endDate.toISOStr
             options: {
                 responsive: true,
                 legend:{
+
                     labels:{
                         fontColor:"black",
                     }
