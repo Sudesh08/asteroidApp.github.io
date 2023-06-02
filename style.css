@@ -9,7 +9,7 @@
     height: 650px;
     /* border: 1px solid red; */
     margin-top: 15px;
-    background-color: rgb(179, 202, 225);
+    /* background-color: rgb(179, 202, 225); */
 }
 .header{
     background-color: #7c77e4;
@@ -30,6 +30,9 @@
 .chart{
     /* border: 1px solid green; */
     height: 450px;
+    display: none;
+    background-color: rgb(179, 202, 225);
+
 }
 .btn{
     

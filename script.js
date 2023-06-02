@@ -13,6 +13,7 @@ if(noOfDays>8){
 }
 else{
     document.querySelector(".error").style.display="none";
+    document.querySelector(".chart").style.display="block";
 const apiUrl="https://api.nasa.gov/neo/rest/v1/feed?start_date=";
 // console.log(apiUrl);
 const apiId="api_key=AVnUWDkkzPjOyADlbXPrSGUVmpRZ4fryk8R3cbrP";
@@ -52,8 +53,6 @@ fetch(apiUrl+startDate.toISOString().split("T")[0]+`&end_date=${endDate.toISOStr
                 // labels: ["a", "b", "c", "d"],
                 datasets: [
                     {
-                        label: "Number of Asteroid",
-                        fontSize: 60,
                         // data: [1, 2, 3, 6],
                         data: AsteroidData,
                         backgroundColor: "#292756",
@@ -74,7 +73,7 @@ fetch(apiUrl+startDate.toISOString().split("T")[0]+`&end_date=${endDate.toISOStr
             }
         });
         })
-        .catch((error) => console.log(error)
+        .catch((error) => console.log("request not found")
         // if(error.value==404){
         //     document.querySelector(".error");
         // }
