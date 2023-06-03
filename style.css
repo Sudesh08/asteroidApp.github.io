@@ -6,7 +6,7 @@
 
 
 .main{
-    height: 650px;
+    /* height: 550px; */
     /* border: 1px solid red; */
     margin-top: 15px;
     /* background-color: rgb(179, 202, 225); */
@@ -19,7 +19,7 @@
     text-align: center;
 }
 .details{
-    height: 100px;
+    /* height: 100px; */
     /* border: 1px solid red; */
     margin-top: 20px;
 }
@@ -29,7 +29,7 @@
 }
 .chart{
     /* border: 1px solid green; */
-    height: 450px;
+    /* height: 380px; */
     display: none;
     background-color: rgb(179, 202, 225);
 
@@ -37,6 +37,13 @@
 .btn{
     
     margin: 10px 0px 10px 0px;
+}
+.table-border{
+    border: 2px solid black;
+}
+.table_container{
+    margin-top: 20px;
+    display: none;
 }
 /* .headStart{
     text-align: end;

@@ -1,5 +1,8 @@
 let myChart;
 
+let fastestAsteroid = null;
+let nearestAsteroid = null;
+
 function calculate(){
 
 let startDate=new Date(document.getElementById("Start-Date").value);
@@ -14,6 +17,7 @@ if(noOfDays>8){
 else{
     document.querySelector(".error").style.display="none";
     document.querySelector(".chart").style.display="block";
+
 const apiUrl="https://api.nasa.gov/neo/rest/v1/feed?start_date=";
 // console.log(apiUrl);
 const apiId="api_key=AVnUWDkkzPjOyADlbXPrSGUVmpRZ4fryk8R3cbrP";
@@ -30,6 +34,27 @@ fetch(apiUrl+startDate.toISOString().split("T")[0]+`&end_date=${endDate.toISOStr
             dateLabels.push(date);
 
         });
+        let near_earth_objects = data.near_earth_objects;
+
+for (const key in near_earth_objects) {
+    if (near_earth_objects.hasOwnProperty(key)) {
+        const element = near_earth_objects[key];
+
+        for (let i = 0; i < element.length; i++) {
+            const orbiting_data = element[i];
+            if (fastestAsteroid === null || orbiting_data.close_approach_data[0].relative_velocity.kilometers_per_hour > fastestAsteroid.close_approach_data[0].relative_velocity.kilometers_per_hour) {
+                fastestAsteroid = orbiting_data;
+            }
+            if (nearestAsteroid === null || orbiting_data.close_approach_data[0].miss_distance.kilometers < nearestAsteroid.close_approach_data[0].miss_distance.kilometers) {
+                nearestAsteroid = orbiting_data;
+            }
+        }
+    }
+}
+document.getElementById("fastest-name").textContent = fastestAsteroid.name;
+document.getElementById("fastest-speed").textContent = fastestAsteroid.close_approach_data[0].relative_velocity.kilometers_per_hour + " km/h";
+document.getElementById("nearest-name").textContent = nearestAsteroid.name;
+document.getElementById("nearest-distance").textContent = nearestAsteroid.close_approach_data[0].miss_distance.kilometers + " km";
 
         const noOfAsteroid = Object.values(data.near_earth_objects);
         const AsteroidData = [];
@@ -97,50 +122,6 @@ function Next(){
     //   }
     
     calculate();
+    document.querySelector(".table_container").style.display="block";
     
 }
-
-//     var startDate=new Date(document.getElementById("Start-Date").value);
-//     alert(startDate);
-//     var endDate=new Date(document.getElementById("end-date").value);
-//     alert(endDate);
-
-// const apiUrl="https://api.nasa.gov/neo/rest/v1/feed?start_date=";
-// // console.log(apiUrl);
-// const apiId="api_key=AVnUWDkkzPjOyADlbXPrSGUVmpRZ4fryk8R3cbrP";
-// fetch(apiUrl+startDate.toISOString().split("T")[0]+`&end_date=${endDate.toISOString().split("T")[0]}&${apiId}`)
-
-//     .then((getData) => getData.json())
-//     .then((data) => {
-//         // console.log(data);
-//         const dataList = Object.keys(data.near_earth_objects);
-//         const dateLabels = [];
-//         // console.log(dataList);
-//         dataList.forEach(function (date) {
-//             console.log(date);
-//             dateLabels.push(date);
-
-//         });
-
-//         const noOfAsteroid = Object.values(data.near_earth_objects);
-//         const AsteroidData = [];
-//         // console.log(noOfAsteroid);
-//         noOfAsteroid.forEach(function (Asteroid) {
-//             const AsteroidSize = Asteroid.length;
-//             console.log(AsteroidSize);
-//             AsteroidData.push(AsteroidSize)
-
-//         });
-       
-        
-//         myChart=null;
-//         if(myChart!=null){
-//             myChart.destroy();
-//         }
-//     })
-    
-//     .catch((error) => console.log(error));
-
-
-
-
