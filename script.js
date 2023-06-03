@@ -90,7 +90,7 @@ document.getElementById("nearest-distance").textContent = nearestAsteroid.close_
                 ],
             },
             options: {
-                responsive: false,
+                responsive: true,
                 legend:{
 
                     labels:{
